@@ -1,0 +1,15 @@
+{% for post in posts %}
+<div class="post">
+    <div class="post_header"><a href="{% url 'joga_app:post' post.id %}">{{post}}</a></div>
+    {% for image in post.images %}
+    <div class="post_image"> <img src="{% static 'joga_app/postImages' %}/{{post.id}}/{{image}}" alt='nope'>
+    </div>
+    {% endfor %}
+    <div class="post_content">
+	<div class="post-pub-date">{{post.publishDate}}</div>
+	{{post.content}}
+	<a class="post-more" href="{% url 'joga_app:post' post.id %}"> More...</a>
+    </div>
+
+</div>
+{% endfor %}

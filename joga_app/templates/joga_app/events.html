@@ -1,0 +1,35 @@
+
+{% extends 'joga_app/base.html' %}
+{% csrf_token %}
+
+{% load static %}
+
+{% block nav-events %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    I am organising public events free of charge (donations appreciated tho :3) at dates and locations specified in the table.<br>If you want personal lesson, call 0987 723 234.
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <th scope="row">{{ event.id }}</th>
+                <td>{{ event.date }}</td>
+                <td><a href="{% url 'joga_app:location' event.location.id %}">{{ event.location }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    {% endblock %}

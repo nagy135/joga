@@ -1,0 +1,30 @@
+
+{% extends 'joga_app/base.html' %}
+{% csrf_token %}
+
+{% load static %}
+
+{% block nav-events %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="container-fluid">
+        <button class="btn btn-primary">
+            <a href="{% url 'joga_app:events' %}">Back</a>
+        </button>
+        <h2>{{ location.name }}</h2>
+    </div>
+    <div class="mapouter">
+        <div class="gmap_canvas">
+            <iframe style="width: 100%;" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q={{location.latitude}}%2C{{location.longitude}}&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <a href="https://www.enable-javascript.net">inštrukcie ako podporu v prehliadači zapnúť.</a>
+        </div>
+    </div>
+    <div class="container-fluid" id="location_image">
+        <div class="post_image"> <img src="{% static 'joga_app/locationImages' %}/{{location.image_url}}" alt='nope'>
+        </div>
+    </div>
+</div>
+
+
+    {% endblock %}

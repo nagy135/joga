@@ -1,0 +1,40 @@
+
+{% extends 'joga_app/base.html' %}
+{% csrf_token %}
+
+{% load static %}
+
+{% block nav-recipes %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for post in posts %}
+    <div class="post">
+        <div class="post_header"><a href="{% url 'joga_app:post' post.id %}">{{post}}</a></div>
+        {% for image in post.images %}
+        <div class="post_image"> <img src="{% static 'joga_app/postImages' %}/{{post.id}}/{{image}}" alt='nope'>
+        </div>
+        {% endfor %}
+        <div class="post_content">
+
+            <div class="post-pub-date">{{post.publishDate}}</div>
+            {{post.content}}
+            <div class="post-footer">
+                <div class="wrapper">
+                    <a class="post-more" href="{% url 'joga_app:post' post.id %}">
+                        <span> Read more...</span>
+                    </a>
+                </div>
+                {% include 'joga_app/chat.html' %}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+    <div id="ajax_load_more" class="wrapper">
+        <a href="#">
+            <span>Next</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

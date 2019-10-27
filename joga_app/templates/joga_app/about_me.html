@@ -1,0 +1,49 @@
+
+{% extends 'joga_app/base.html' %}
+{% csrf_token %}
+
+{% load static %}
+
+{% block nav-about_me %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-sm-12 greeting">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar ullamcorper sapien quis vehicula. Nulla <br>non ligula sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque pharetra dictum arcu, at feugiat dolor rhoncus nec. Integer tempus volutpat sapien, eu <br>laoreet arcu rhoncus id. Nullam scelerisque, lectus porta rhoncus lobortis, sapien augue dignissim ipsum, eu vulputate tellus odio eu diam. Sed commodo lorem vitae felis luctus volutpat. Morbi ac vulputate elit, id dignissim lacus. Sed sit amet mi et orci efficitur lacinia.
+<br>
+Phasellus nisl nisi, dignissim vitae orci ac, luctus elementum velit. Pellentesque nec posuere enim, quis lacinia lacus. Donec<br> urna mauris, varius at sem at, porta porta nulla. Pellentesque viverra sagittis ex ornare eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc venenatis dolor id volutpat ultrices<br>. Ut consequat aliquet scelerisque. Integer ultricies purus non sapien dignissim, sit amet gravida risus condimentum. Mauris at vestibulum risus. Cras eleifend con<br>sequat arcu quis facilisis. Aenean mollis urna diam, quis sagittis neque laoreet eu. Etiam efficitur ante sapien, viverra feugiat nunc venenatis sit amet. Morbi gravida metus non laoreet vehicula. In erat ante, malesuada eu libero tempus, ultricies finibus tortor. Curabitur porttitor purus quis lacus facilisis sollicitudin.
+
+    </div>
+    <div class="col-sm-12 greeting">
+        <h2>Contact me</h2>
+        <form action="{% url 'joga_app:about_me'  %}" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group row">
+                {{ form.your_name.errors }}
+                <label for="{{ form.your_name.id_for_label }}" class="col-sm-3 col-form-label">Your name:</label>
+                <div class="col-sm-9">
+                    {{ form.your_name }}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ form.email.errors }}
+                <label for="{{ form.email.id_for_label }}" class="col-sm-3 col-form-label">Email:</label>
+                <div class="col-sm-9">
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ form.comment.errors }}
+                <label for="{{ form.comment.id_for_label }}" class="col-sm-3 col-form-label">Comment:</label>
+                <div class="col-sm-9">
+                    {{ form.comment }}
+                </div>
+            </div>
+            <div class="wrapper">
+              <a href="#"><span>Send message</span></a>
+            </div>
+        </form>
+    </div>
+</div>
+    {% endblock %}

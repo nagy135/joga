@@ -1,0 +1,26 @@
+<div class="chat clear-fix">
+    <div class="wrapper wrapper-left clear-fix">
+        <a href="#">
+            <span> <i class="fa fa-comments"></i> Comments</span>
+        </a>
+    </div>
+    <div class="chat-content clear-fix">
+        <div class="chat-bubble">Hew Hoe asda fag ga asfas okok as faf?</div>
+        <div class="chat-bubble chat-bubble-right">Hew Hoe asda fag ga asfas okok as faf?</div>
+        <form class='new-message' method='POST' action="{% url 'joga_app:submit_comment' %}">
+            <div class="form-group">
+                <label for="nickname">Nickname:</label>
+                <input type="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="wrapper send-comment">
+                <a href="#">
+                    <span>Comment</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+
+{% extends 'joga_app/base.html' %}
+{% csrf_token %}
+
+{% load static %}
+
+{% block nav-index %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="post">
+            <div class="wrapper wrapper-left">
+                {% if post.category.id == 1 %}
+                <a href="{% url 'joga_app:blog' %}">
+                    <span>Back</span>
+                </a>
+                {% elif post.category.id == 2 %}
+                <a href="{% url 'joga_app:recipes' %}">
+                    <span>Back</span>
+                </a>
+                {% endif %}
+            </div>
+    <div class="post_header"><a href="{% url 'joga_app:post' post.id %}">{{post}}</a></div>
+        {% for image in post.images %}
+        <div class="post_image"> <img src="{% static 'joga_app/postImages' %}/{{post.id}}/{{image}}" alt='nope'>
+        </div>
+        {% endfor %}
+        <div class="post_content">
+
+            <div class="post-pub-date">{{post.publishDate}}</div>
+            {{post.content}}
+        </div>
+        <div class="post-footer">
+            {% include 'joga_app/chat.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
